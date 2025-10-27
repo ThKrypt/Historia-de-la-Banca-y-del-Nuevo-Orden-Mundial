@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Historia de la Banca y del Nuevo Orden Mundial (versión académica)</title>
+<style>
+:root{--bg:#f7f7f7;--ink:#1f2937;--muted:#6b7280;--border:#d1d5db;--blue:#dfefff;--green:#dff5ea;--yellow:#fff3bf;--red:#ffdcdc;--accent:#ef4444;--card:#ffffff}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
+a{color:#0ea5e9;text-decoration:none} a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:10;background:white;border-bottom:1px solid var(--border)}
+.header-inner{max-width:1400px;margin:0 auto;padding:14px 16px}
+h1{margin:0 0 4px;font-size:20px} .by{margin:0;color:var(--muted);font-size:13px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px} button,select{padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:white;font-size:13px;cursor:pointer} button:hover{filter:brightness(0.98)}
+#app{display:grid;grid-template-columns:280px 1fr;gap:0;max-width:1400px;margin:0 auto}
+@media (max-width:1100px){#app{grid-template-columns:1fr} aside{order:2} main{order:1;height:60vh}}
+aside{background:var(--card);border-right:1px solid var(--border)} .card{border-bottom:1px solid var(--border);padding:14px 14px} .card h3{margin:0 0 6px;font-size:14px} .card p,.card li{font-size:12px;line-height:1.4;color:#374151}
+.legend{display:flex;gap:8px;align-items:center;font-size:12px;color:#374151;flex-wrap:wrap} .pill{width:14px;height:14px;border-radius:4px;border:1px solid var(--border);display:inline-block}
+main{background:#fafafa;position:relative;overflow:hidden} svg{width:100%;height:100%;touch-action:none;display:block;background:#fafafa}
+.node rect{rx:10;ry:10;stroke:#9ca3af;stroke-width:1.1;fill:white} .node.entity rect{fill:var(--blue)} .node.context rect{fill:var(--green)} .node.note rect{fill:var(--yellow)} .node.rupture rect{fill:var(--red)}
+.node foreignObject{pointer-events:none} .node div{font-size:12px;line-height:1.25;outline:none;pointer-events:auto} .sel rect{stroke:#111;stroke-width:2}
+.connector{stroke:var(--accent);stroke-width:1.8;marker-end:url(#arrow);opacity:.9} .connector.muted{stroke:#9ca3af;opacity:.85;marker-end:url(#arrowGray)}
+footer{max-width:1400px;margin:0 auto;padding:24px 16px} footer h3{margin:16px 0 8px} footer li{font-size:13px;color:#374151;line-height:1.5} .kbd{font-family:ui-monospace,Menlo,monospace;background:#eee;border:1px solid #ddd;border-bottom-color:#c9c9c9;padding:1px 4px;border-radius:6px;font-size:11px} .small{font-size:12px;color:#6b7280}
+</style>
+</head>
+<body>
+<header><div class="header-inner">
+  <h1>Historia de la Banca y del Nuevo Orden Mundial (versión académica)</h1>
+  <p class="by">Ruben Aroca Jácome, Ph.D. — 1650–2025 — Sitio autocontenido (sin CDN)</p>
+  <div class="toolbar">
+    <button id="add">+ Nodo</button>
+    <select id="kind"><option value="entity">Entidad/Actor (azul)</option><option value="context" selected>Contexto (verde)</option><option value="note">Nota (amarillo)</option><option value="rupture">Ruptura (rojo)</option></select>
+    <button id="linkBtn">Conectar (L)</button>
+    <button id="delBtn">Eliminar</button>
+    <button id="saveBtn">Guardar JSON</button>
+    <button id="loadBtn">Cargar JSON</button>
+    <button id="svgBtn">Exportar SVG</button>
+    <button id="pngBtn">Exportar PNG</button>
+  </div>
+</div></header>
+
+<div id="app">
+  <aside>
+    <div class="card"><h3>Cronología (1650 → actualidad)</h3>
+      <ol id="timeline" style="margin:0 0 0 18px;padding:0;display:grid;gap:4px">
+        <li><a href="#" data-target="gb_1650">Gran Bretaña (1650–1700)</a></li>
+        <li><a href="#" data-target="fr_1770">Francia (1770–1820)</a></li>
+        <li><a href="#" data-target="us_1850">Estados Unidos (1850–1913)</a></li>
+        <li><a href="#" data-target="ww1">Primera Guerra Mundial</a></li>
+        <li><a href="#" data-target="interwar">Entreguerras y Bretton Woods</a></li>
+        <li><a href="#" data-target="ww2">Segunda Guerra Mundial</a></li>
+        <li><a href="#" data-target="institutions">Arquitectura 1945–1970</a></li>
+        <li><a href="#" data-target="petrodollar">Petrodólar (1970s)</a></li>
+        <li><a href="#" data-target="liberal">Liberalización (1980s)</a></li>
+        <li><a href="#" data-target="global">Globalización (1990s–2008)</a></li>
+        <li><a href="#" data-target="gfc">Crisis Global (2008–2012)</a></li>
+        <li><a href="#" data-target="postgfc">Posterior a 2008</a></li>
+        <li><a href="#" data-target="fintech">Fintech / Cripto (2010s–2025)</a></li>
+        <li><a href="#" data-target="thinktanks">Think Tanks</a></li>
+        <li><a href="#" data-target="sociedades">Sociedades discretas</a></li>
+        <li><a href="#" data-target="citas">Citas</a></li>
+      </ol>
+    </div>
+    <div class="card"><h3>Leyenda</h3>
+      <div class="legend">
+        <span class="pill" style="background:#dfefff"></span> Entidad/Actor
+        <span class="pill" style="background:#dff5ea"></span> Contexto
+        <span class="pill" style="background:#fff3bf"></span> Nota
+        <span class="pill" style="background:#ffdcdc"></span> Ruptura
+      </div>
+    </div>
+    <div class="card"><h3>Ayuda rápida</h3>
+      <ul style="margin:0 0 0 18px">
+        <li><span class="kbd">Arrastrar</span> para mover nodos</li>
+        <li><span class="kbd">Doble clic</span> para editar texto</li>
+        <li><span class="kbd">L</span> o “Conectar” para enlazar</li>
+        <li><span class="kbd">Supr</span> para eliminar selección</li>
+        <li><span class="kbd">Ctrl/Cmd + rueda</span> zoom; arrastrar fondo = panorámica</li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"></path>
+        </marker>
+        <marker id="arrowGray" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af"></path>
+        </marker>
+      </defs>
+      <g id="viewport">
+        <g id="links"></g>
+        <g id="nodes"></g>
+      </g>
+    </svg>
+  </main>
+</div>
+
+<footer>
+  <h3>Referencias bibliográficas (selección, APA 7ª)</h3>
+  <ul>
+    <li>Arrighi, G. (1994). <i>The Long Twentieth Century</i>. Verso.</li>
+    <li>Braudel, F. (1982). <i>La dinámica del capitalismo</i>. Alianza.</li>
+    <li>Kindleberger, C. P. (1978). <i>Manias, Panics, and Crashes</i>. Basic Books.</li>
+    <li>Piketty, T. (2014). <i>Capital in the Twenty-First Century</i>. Harvard University Press.</li>
+    <li>Polanyi, K. (1944). <i>The Great Transformation</i>. Beacon Press.</li>
+    <li>Weber, M. (1921). <i>Economía y sociedad</i>. Fondo de Cultura Económica (ed. posterior).</li>
+  </ul>
+  <p class="small">Nota: Herramienta didáctica de síntesis. Requiere contraste con literatura y series históricas.</p>
+</footer>
+
+<script>
+const DATA = {"meta": {"title": "Historia de la Banca y del Nuevo Orden Mundial (version academica)", "author": "Ruben Aroca Jacome, Ph.D.", "palette": "soft-academic", "version": "1.0", "range": "1650-2025"}, "nodes": [{"id": "intro", "kind": "context", "x": 80, "y": 40, "w": 780, "h": 120, "text": "Proposito del esquema:\nSintesis academica de procesos historicos (1650 a hoy) que vinculan banca, Estado, guerra y pensamiento estrategico.\nPaleta suave. Flujo: cronologia + interdependencias."}, {"id": "gb_1650", "kind": "context", "x": 60, "y": 200, "w": 360, "h": 140, "text": "Gran Bretana (1650-1700)\n- Banco de Inglaterra (1694)\n- Deuda publica, Marina y poder imperial\n- Bolsa de Londres"}, {"id": "fr_1770", "kind": "context", "x": 460, "y": 200, "w": 360, "h": 160, "text": "Francia (1770-1820)\n- Crisis fiscal y Revolucion (1789)\n- Guerras napoleonicas\n- Banca y deuda publica"}, {"id": "us_1850", "kind": "context", "x": 860, "y": 200, "w": 360, "h": 160, "text": "Estados Unidos (1850-1913)\n- Industrializacion y Wall Street\n- Panicos financieros\n- Reserva Federal (1913)"}, {"id": "ww1", "kind": "rupture", "x": 60, "y": 400, "w": 360, "h": 120, "text": "Primera Guerra Mundial (1914-1918)\n- Movilizacion financiera\n- Suspension del oro"}, {"id": "interwar", "kind": "context", "x": 460, "y": 400, "w": 360, "h": 130, "text": "Entreguerras y Bretton Woods (1919-1945)\n- Crisis de entreguerras\n- Bretton Woods (1944-45)"}, {"id": "ww2", "kind": "rupture", "x": 860, "y": 400, "w": 360, "h": 120, "text": "Segunda Guerra Mundial (1939-1945)\n- Economia de guerra\n- Reconstruccion"}, {"id": "institutions", "kind": "entity", "x": 60, "y": 560, "w": 360, "h": 140, "text": "Arquitectura 1945-1970\n- FMI / Banco Mundial\n- GATT (-> OMC)\n- Plan Marshall"}, {"id": "petrodollar", "kind": "context", "x": 460, "y": 560, "w": 360, "h": 120, "text": "Shock petrolero y petrodolar (1970s)\n- Fin de Bretton Woods (71-73)\n- Reciclaje de petrodolares"}, {"id": "liberal", "kind": "context", "x": 860, "y": 560, "w": 360, "h": 120, "text": "Liberalizacion financiera (1980s)\n- Desregulacion\n- Expansion banca global"}, {"id": "global", "kind": "context", "x": 60, "y": 720, "w": 360, "h": 120, "text": "Globalizacion (1990s-2008)\n- Integracion financiera\n- Derivados e innovacion"}, {"id": "gfc", "kind": "rupture", "x": 460, "y": 720, "w": 360, "h": 120, "text": "Crisis Global (2008-2012)\n- Hipotecaria y sistemica\n- Rescates"}, {"id": "postgfc", "kind": "context", "x": 860, "y": 720, "w": 360, "h": 120, "text": "Posterior a 2008\n- Basilea III, macroprudencia\n- QE y tipos bajos"}, {"id": "fintech", "kind": "entity", "x": 60, "y": 880, "w": 360, "h": 120, "text": "Fintech / Cripto (2010s-2025)\n- Pagos, DeFi, CBDC\n- Ciberseguridad"}, {"id": "thinktanks", "kind": "entity", "x": 460, "y": 880, "w": 360, "h": 120, "text": "Think Tanks y elites epistemicas\n- Politica exterior, economia, seguridad\n- Redes transnacionales"}, {"id": "sociedades", "kind": "note", "x": 860, "y": 880, "w": 360, "h": 120, "text": "Sociedades discretas\n- Influencias historicas, educacion, redes\n- (Seccion interpretativa)"}, {"id": "citas", "kind": "note", "x": 60, "y": 1040, "w": 1160, "h": 120, "text": "Citas y notas\n- Declaraciones sobre banca y soberania monetaria\n- Uso critico con contexto"}], "links": [{"id": "L1", "a": "gb_1650", "b": "fr_1770", "muted": false}, {"id": "L2", "a": "fr_1770", "b": "us_1850", "muted": false}, {"id": "L3", "a": "us_1850", "b": "ww1", "muted": false}, {"id": "L4", "a": "ww1", "b": "interwar", "muted": false}, {"id": "L5", "a": "interwar", "b": "ww2", "muted": false}, {"id": "L6", "a": "ww2", "b": "institutions", "muted": false}, {"id": "L7", "a": "institutions", "b": "petrodollar", "muted": false}, {"id": "L8", "a": "petrodollar", "b": "liberal", "muted": false}, {"id": "L9", "a": "liberal", "b": "global", "muted": false}, {"id": "L10", "a": "global", "b": "gfc", "muted": false}, {"id": "L11", "a": "gfc", "b": "postgfc", "muted": false}, {"id": "L12", "a": "postgfc", "b": "fintech", "muted": false}, {"id": "X1", "a": "thinktanks", "b": "liberal", "muted": true}, {"id": "X2", "a": "thinktanks", "b": "postgfc", "muted": true}, {"id": "X3", "a": "sociedades", "b": "institutions", "muted": true}]};
+// Pan & zoom
+const svg=document.getElementById('svg'), viewport=document.getElementById('viewport');
+let scale=1, panX=0, panY=0; function applyView(){viewport.setAttribute('transform',`translate(${panX},${panY}) scale(${scale})`)} applyView();
+let panning=false,p0=null; svg.addEventListener('mousedown',e=>{if(e.target===svg){panning=true;p0={x:e.clientX,y:e.clientY,panX,panY}}});
+window.addEventListener('mousemove',e=>{if(panning){panX=p0.panX+(e.clientX-p0.x);panY=p0.panY+(e.clientY-p0.y);applyView()}}); window.addEventListener('mouseup',()=>panning=false);
+svg.addEventListener('wheel',e=>{e.preventDefault();const d=Math.sign(e.deltaY)*-0.1;scale=Math.min(3,Math.max(0.25,scale+d));applyView()},{passive:false});
+
+let nodes=JSON.parse(JSON.stringify(DATA.nodes)), links=JSON.parse(JSON.stringify(DATA.links));
+const nodesG=document.getElementById('nodes'), linksG=document.getElementById('links'); let selection=null; function uid(){return Math.random().toString(36).slice(2,9)}
+function draw(){nodesG.innerHTML=''; for(const n of nodes) nodesG.appendChild(nodeEl(n)); drawLinks()}
+function drawLinks(){linksG.innerHTML=''; for(const l of links){const a=nodes.find(n=>n.id===l.a),b=nodes.find(n=>n.id===l.b); if(!a||!b) continue; const ax=a.x+a.w/2,ay=a.y+a.h/2,bx=b.x+b.w/2,by=b.y+b.h/2,mx=(ax+bx)/2; const p=document.createElementNS('http://www.w3.org/2000/svg','path'); p.setAttribute('d',`M ${ax} ${ay} C ${mx} ${ay}, ${mx} ${by}, ${bx} ${by}`); p.classList.add('connector'); if(l.muted) p.classList.add('muted'); p.setAttribute('data-id',l.id); p.addEventListener('click',e=>{select({id:l.id,type:'link'});e.stopPropagation()}); linksG.appendChild(p)}}
+function nodeEl(n){const g=document.createElementNS('http://www.w3.org/2000/svg','g'); g.classList.add('node',n.kind); g.setAttribute('data-id',n.id);
+  const r=document.createElementNS('http://www.w3.org/2000/svg','rect'); r.setAttribute('x',n.x); r.setAttribute('y',n.y); r.setAttribute('width',n.w); r.setAttribute('height',n.h); g.appendChild(r);
+  const fo=document.createElementNS('http://www.w3.org/2000/svg','foreignObject'); fo.setAttribute('x',n.x+8); fo.setAttribute('y',n.y+6); fo.setAttribute('width',n.w-16); fo.setAttribute('height',n.h-12);
+  const div=document.createElement('div'); div.setAttribute('xmlns','http://www.w3.org/1999/xhtml'); div.contentEditable=true; div.innerText=n.text||''; div.addEventListener('input',()=>n.text=div.innerText); fo.appendChild(div); g.appendChild(fo);
+  let drag=false,dx=0,dy=0; g.addEventListener('mousedown',e=>{if(e.target===svg)return; drag=true; select({id:n.id,type:'node'}); dx=e.offsetX/scale-n.x; dy=e.offsetY/scale-n.y; e.stopPropagation()});
+  window.addEventListener('mousemove',e=>{if(!drag)return; n.x=e.offsetX/scale-dx; n.y=e.offsetY/scale-dy; r.setAttribute('x',n.x); r.setAttribute('y',n.y); fo.setAttribute('x',n.x+8); fo.setAttribute('y',n.y+6); drawLinks()});
+  window.addEventListener('mouseup',()=>drag=false);
+  g.addEventListener('click',e=>{select({id:n.id,type:'node'}); e.stopPropagation()});
+  return g;}
+function select(s){selection=s; document.querySelectorAll('.sel').forEach(el=>el.classList.remove('sel')); if(!s)return; if(s.type==='node')document.querySelector(`.node[data-id="${s.id}"]`)?.classList.add('sel'); else document.querySelector(`path[data-id="${s.id}"]`)?.classList.add('sel')}
+svg.addEventListener('click',()=>select(null));
+
+document.getElementById('add').onclick=()=>{const kind=document.getElementById('kind').value; const n={id:uid(),kind,x:120,y:120,w:280,h:120,text:'Nuevo nodo (edite)'}; nodes.push(n); draw(); select({id:n.id,type:'node'})};
+let linkMode=false,first=null; document.getElementById('linkBtn').onclick=()=>{linkMode=!linkMode; first=null};
+nodesG.addEventListener('click',e=>{const g=e.target.closest('.node'); if(!g||!linkMode) return; const id=g.getAttribute('data-id'); const n=nodes.find(o=>o.id===id); if(!first) first=n; else if(first.id!==n.id) {links.push({id:uid(),a:first.id,b:n.id,muted:false}); drawLinks(); linkMode=false; first=null}});
+document.getElementById('delBtn').onclick=()=>{if(!selection) return; if(selection.type==='node'){nodes=nodes.filter(n=>n.id!==selection.id); links=links.filter(l=>l.a!==selection.id && l.b!==selection.id)} else {links=links.filter(l=>l.id!==selection.id)}; select(null); draw()};
+window.addEventListener('keydown',e=>{if((e.key==='Delete'||e.key==='Backspace')&&selection)document.getElementById('delBtn').click(); if(e.key.toLowerCase()==='l')document.getElementById('linkBtn').click();});
+
+document.getElementById('saveBtn').onclick=()=>{const payload={meta:DATA.meta,nodes,links}; const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=Object.assign(document.createElement('a'),{href:url,download:'diagrama_guardado.json'}); a.click(); URL.revokeObjectURL(url)};
+document.getElementById('loadBtn').onclick=()=>{const inp=document.createElement('input'); inp.type='file'; inp.accept='.json,application/json'; inp.onchange=e=>{const f=e.target.files[0]; const r=new FileReader(); r.onload=()=>{const obj=JSON.parse(r.result); nodes=obj.nodes||[]; links=obj.links||[]; draw()}; r.readAsText(f)}; inp.click()};
+
+document.getElementById('svgBtn').onclick=()=>{const clone=svg.cloneNode(true); clone.querySelector('defs').removeAttribute('id'); const ser=new XMLSerializer().serializeToString(clone); const blob=new Blob([ser],{type:'image/svg+xml;charset=utf-8'}); const url=URL.createObjectURL(blob); const a=Object.assign(document.createElement('a'),{href:url,download:'Historia_Banca_Orden_ES.svg'}); a.click(); URL.revokeObjectURL(url)};
+document.getElementById('pngBtn').onclick=()=>{const xml=new XMLSerializer().serializeToString(svg); const svg64='data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(xml))); const img=new Image(); img.onload=()=>{const c=document.createElement('canvas'); c.width=img.width; c.height=img.height; const ctx=c.getContext('2d'); ctx.fillStyle='#fafafa'; ctx.fillRect(0,0,c.width,c.height); ctx.drawImage(img,0,0); c.toBlob(b=>{const url=URL.createObjectURL(b); const a=Object.assign(document.createElement('a'),{href:url,download:'Historia_Banca_Orden_ES.png'}); a.click(); URL.revokeObjectURL(url)});}; img.src=svg64};
+
+document.querySelectorAll('#timeline a').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault(); const id=a.getAttribute('data-target'); const n=nodes.find(x=>x.id===id); if(!n) return; const vw=svg.clientWidth, vh=svg.clientHeight; panX = vw/2 - (n.x+n.w/2)*scale; panY = vh/2 - (n.y+n.h/2)*scale; applyView(); select({id:n.id,type:'node'});})});
+draw();
+</script>
+</body>
+</html>
